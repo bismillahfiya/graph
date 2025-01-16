@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Chart</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { packages: ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Replace $CHART_DATA$ with actual JSON data
+            var chartData = $CHART_DATA$;
+
+            // Convert the JSON string to a Google Charts DataTable
+            var data = google.visualization.arrayToDataTable(chartData);
+
+            // Set chart options
+            var options = {
+                title: 'BPM History',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                width: 400,
+                height: 300
+            };
+
+            // Instantiate and draw the chart
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h2>BPM History</h2>
+    <div id="chart_div"></div>
+</body>
+</html>
